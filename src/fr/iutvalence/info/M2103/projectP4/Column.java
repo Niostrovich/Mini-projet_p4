@@ -22,8 +22,8 @@ public class Column {
  */
 	public Column()
 	{
-	this.capacity=DEFAULT_CAPACITY;
-	this.height=0;
+		this.capacity=DEFAULT_CAPACITY;
+		this.height=0;
 	}
 	
 }
