@@ -1,6 +1,6 @@
 package fr.iutvalence.info.M2103.projectP4;
 /**
- * Create grid's column
+ * Represent grid's column
  * @author augstm
  *
  */

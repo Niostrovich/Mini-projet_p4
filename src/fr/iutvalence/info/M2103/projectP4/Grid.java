@@ -7,17 +7,19 @@ package fr.iutvalence.info.M2103.projectP4;
  */
 public class Grid {
 	private final static int COLUMN_NUMBER = 6;
+	public Column[] Col; 
+	
 	/**
 	 * Grid's builder
 	 */
-	public Grid()
+	/*public Grid()
 	{
-		for(int i=0;i<COLUMN_NUMBER; i++)
+		for(int numCol=0;numCol<COLUMN_NUMBER; numCol++)
 		{
 			new Column();	
 		}
 		 	
-	}
+	}*/
 	
 
 }
