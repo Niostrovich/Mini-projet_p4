@@ -1,6 +1,5 @@
 package fr.iutvalence.info.M2103.projectP4;
 
-// TODO fix comment: detail it (DONE)
 /**
  * Main function run the program
  * 

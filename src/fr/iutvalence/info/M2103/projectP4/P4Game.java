@@ -1,5 +1,6 @@
 package fr.iutvalence.info.M2103.projectP4;
 
+// TODO fix comment (this class does not really launch a game)
 /**
  * launching game
  * 
