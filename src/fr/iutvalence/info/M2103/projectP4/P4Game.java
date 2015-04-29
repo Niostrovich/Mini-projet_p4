@@ -1,9 +1,9 @@
 package fr.iutvalence.info.M2103.projectP4;
 
-// TODO fix comment (this class does not really launch a game)
+// TODO fix comment (this class does not really launch a game) (DONE)
 /**
- * launching game
- * 
+ * initialize new game
+ * game procedures
  * @author augstm
  *
  */

@@ -1,29 +1,14 @@
 package fr.iutvalence.info.M2103.projectP4;
+
 /**
- * Create token 
+ * represents a token (color) 
  * @author augstm
- *
  */
 
-public class Token 
-{
+public enum Token {
 	/**
 	 * token's color
 	 */
-	private static final boolean COLOR_RED = true; 
-	private static final boolean COLOR_YELLOW = false;
-	
-	/**
-	 *token's color 
-	 */
-	private boolean color;
-	
-	/**
-	 * token's builder
-	 */
-	public Token(boolean color)
-	{
-	 this.color=color;
-	}
-
+	COLOR_RED,
+	COLOR_YELLOW;
 }

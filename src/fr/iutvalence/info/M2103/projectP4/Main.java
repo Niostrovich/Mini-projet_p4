@@ -10,5 +10,6 @@ public class Main {
 
 	public void main(String[] args) {
 		new P4Game();
+		//System.out.println(new Grid());
 	}
 }
