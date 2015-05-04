@@ -10,10 +10,14 @@ package fr.iutvalence.info.M2103.projectP4;
 public class Grid {
 
 	/**
-	 * quantity of a column
-	 * number of column
+	 * number of columns
 	 */
-	private final static int COLUMN_NUMBER = 6;
+	private final static int NUMBER_OF_COLUMNS = 7;
+
+	/**
+	 * number of lines
+	 */
+	private final static int NUMBER_OF_LINES = 6;
 
 	/**
 	 * represents grid (=table of columns)
@@ -22,22 +26,35 @@ public class Grid {
 	 */
 	public Column[] columns;
 
-	// TODO fix comment: detail comment, tell how is the grid once built (empty, full, ... ?)
+	// TODO fix comment: detail comment, tell how is the grid once built (empty, full, ... ?) (DONE)
 	/**
 	 * Grid's builder column's grid
-	 * Contains 6 columns
+	 * Contains 6 (empty) columns
+	 * In other words : builds a grid composed of 6 empty columns
 	 */
 	public Grid() {
-		for (int numCol = 0; numCol < COLUMN_NUMBER; numCol++) {
-			this.columns[numCol] = new Column(numCol);
+		for (int numCol = 0; numCol < NUMBER_OF_COLUMNS; numCol++) {
+			this.columns[numCol] = new Column();
 		}
 	}
 	
-	// TODO write comment
-	public boolean addToken(int number, Token myColor)
+	// TODO write comment (DONE)
+	/**
+	 * the function add a token in the column if possible (empty slots available in the column).
+	 * @param number number of the column (where the token is added).
+	 * @param myColor color of the token that is added.
+	 * @return true if token was added ; false otherwise.
+	 */
+	public boolean addToken(int number, CellState myColor)
 	{
+		this.columns=new Column[NUMBER_OF_COLUMNS];
+		for (int numCol=0; numCol<NUMBER_OF_COLUMNS;numCol++)
+		{
+			this.columns[numCol]=new Column();
+		}
+		// Small problem to settle (private->public)
 		if (this.columns[number].height<this.columns[number].capacity){
-			this.columns[number].elements[this.columns[number].height-1]=myColor;
+			this.columns[number].cellStates[this.columns[number].height-1]=myColor;
 			this.columns[number].height=this.columns[number].height+1;
 			return true;
 		}
@@ -49,20 +66,18 @@ public class Grid {
 	 * Get an Ascii-Art representation of the grid
 	 * 
 	 */
-	/*							To update soon (false at the moment)
 	public String toString()
 	{
-		String echiquierAsciiArt = "------------------------------------------------\n";
-
-		for (int numeroDeLigne = 0; numeroDeLigne < NOMBRE_DE_LIGNES; numeroDeLigne++)
+		String p4AsciiArt = "------------------------------------------------\n";
+		for (int lineNumber=NUMBER_OF_LINES-1; lineNumber>=0; lineNumber--)
 		{
-			for (int numeroDeColonne = 0; numeroDeColonne < NOMBRE_DE_COLONNES; numeroDeColonne++)
-				echiquierAsciiArt += this.obtenirCase(new Position(numeroDeLigne, numeroDeColonne));
-			echiquierAsciiArt += "\n------------------------------------------------\n";
+			for (int columnNumber=0; columnNumber< NUMBER_OF_COLUMNS; columnNumber++)
+				p4AsciiArt += this.columns[columnNumber].tokenAtGivenHeightToString(lineNumber);
+			p4AsciiArt+="\n";
 		}
-
-		return echiquierAsciiArt;
+		p4AsciiArt += "------------------------------------------------\n";
+		return p4AsciiArt;
 	}
-	*/
+	
 	
 }

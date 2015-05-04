@@ -9,11 +9,9 @@ package fr.iutvalence.info.M2103.projectP4;
 public class Column {
 
 	// TODO (think about it) if column are stored in an array, the array index is already
-	// a way to identify column among others
-	/**
-	 * identity of column
-	 */
-	private final int number;
+	// a way to identify column among others (DONE)
+
+	//private final int number; (TO DELETE)
 
 	/**
 	 * column's capacity
@@ -26,14 +24,14 @@ public class Column {
 	 * number of token in the column
 	 * modified from class Grid
 	 */
-	public int height;
+	private int height;
 
 	/**
 	 * capacity's column
 	 * maximum number of token in the column (height + available space for tokens)
 	 * 
 	 */
-	public int capacity;
+	private final int capacity;
 
 	
 	/**
@@ -41,17 +39,22 @@ public class Column {
 	 * each element is a token
 	 * modified from class Grid
 	 */
-	public Token[] elements;
+	private CellState[] cellStates;
 	
 	/**
-	 * column's builder default values for capacity and height column number
-	 * (parameter)
-	 * a column has a capacity, a height, and a number(it's the identifier of the column) 
+	 * Returns a new empty column 
 	 */
-	public Column(int numCol) {
+	public Column() {
 		this.capacity = FIXED_CAPACITY;
 		this.height = 0;
-		this.number = numCol;
+		this.cellStates = new CellState[FIXED_CAPACITY];
+		for (int numCell=0;numCell<FIXED_CAPACITY;numCell++)
+		{
+			cellStates[numCell]=CellState.NO_TOKEN;
+		}
 	}
-		
+
+	public String tokenAtGivenHeightToString(int lineNumber) {
+		return this.cellStates[lineNumber].toString();
+	}
 }
