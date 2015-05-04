@@ -1,6 +1,5 @@
 package fr.iutvalence.info.M2103.projectP4;
 
-// TODO detail comment (DONE)
 /**
  * represents the grid
  * it's our game's grid
@@ -10,14 +9,12 @@ package fr.iutvalence.info.M2103.projectP4;
  */
 public class Grid {
 
-	// TODO fix comment: a grid can have anything different than the default number of columns? no, (DONE)
 	/**
 	 * quantity of a column
 	 * number of column
 	 */
 	private final static int COLUMN_NUMBER = 6;
 
-	// TODO fix comment: it is pretty not understandable... (DONE)
 	/**
 	 * represents grid (=table of columns)
 	 * the token always falls on the lowest possible place in the column
@@ -25,7 +22,7 @@ public class Grid {
 	 */
 	public Column[] columns;
 
-	// TODO fix comment: detail comment, tell how is the grid once built (empty, full, ... ?) (DONE)
+	// TODO fix comment: detail comment, tell how is the grid once built (empty, full, ... ?)
 	/**
 	 * Grid's builder column's grid
 	 * Contains 6 columns
@@ -36,6 +33,7 @@ public class Grid {
 		}
 	}
 	
+	// TODO write comment
 	public boolean addToken(int number, Token myColor)
 	{
 		if (this.columns[number].height<this.columns[number].capacity){

@@ -8,21 +8,19 @@ package fr.iutvalence.info.M2103.projectP4;
  */
 public class Column {
 
-	// TODO (tink anout it) if column are stored in an arry, the array index is already
+	// TODO (think about it) if column are stored in an array, the array index is already
 	// a way to identify column among others
 	/**
 	 * identity of column
 	 */
 	private final int number;
 
-	// TODO (think about it) is there some columns with a different capacity? (DONE)
 	/**
 	 * column's capacity
 	 * the maximum height
 	 */
 	private final static int FIXED_CAPACITY = 6;
 
-	// TODO detail comment (the diffenrec between height and capacity is not clear) (DONE)
 	/**
 	 * column's height
 	 * number of token in the column
@@ -30,7 +28,6 @@ public class Column {
 	 */
 	public int height;
 
-	// TODO detail comment (the diffenrec between height and capacity is not clear) (DONE)
 	/**
 	 * capacity's column
 	 * maximum number of token in the column (height + available space for tokens)
@@ -46,7 +43,6 @@ public class Column {
 	 */
 	public Token[] elements;
 	
-	// TODO detail comment (how is the column when built?)(DONE)
 	/**
 	 * column's builder default values for capacity and height column number
 	 * (parameter)
