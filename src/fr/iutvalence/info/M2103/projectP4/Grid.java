@@ -68,7 +68,7 @@ public class Grid {
 	 * Get an Ascii-Art representation of the grid
 	 * 
 	 */
-	public String toString()
+	public String gridToString()
 	{
 		String p4AsciiArt = "-------------------------------------------\n";
 		for (int lineNumber=NUMBER_OF_LINES-1; lineNumber>=0; lineNumber--)
