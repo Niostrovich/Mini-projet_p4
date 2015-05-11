@@ -14,15 +14,15 @@ public enum CellState {
 		
 	public String tokenToString()
 	{
-		if(this == RED_TOKEN)
+		if(this==RED_TOKEN)
 		{
-			return "R";
+			return "  R  ";
 		}
-		if(this ==YELLOW_TOKEN)
+		if(this==YELLOW_TOKEN)
 		{
-			return "Y";
+			return "  Y  ";
 		}
-		return " ";
+		return "     ";
 	}
 	
 }
