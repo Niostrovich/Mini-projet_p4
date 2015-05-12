@@ -24,14 +24,14 @@ public class Column {
 	 * number of token in the column
 	 * modified from class Grid
 	 */
-	private int height;
+	protected int height;
 
 	/**
 	 * capacity's column
 	 * maximum number of token in the column (height + available space for tokens)
 	 * 
 	 */
-	private final int capacity;
+	protected final int capacity;
 
 	
 	/**
@@ -39,12 +39,13 @@ public class Column {
 	 * each element is a token
 	 * modified from class Grid
 	 */
-	private CellState[] cellStates;
+	protected CellState[] cellStates=null;
 	
 	/**
 	 * Returns a new empty column 
 	 */
 	public Column() {
+		this.cellStates=new CellState[FIXED_CAPACITY];
 		this.capacity = FIXED_CAPACITY;
 		this.height = 0;
 		this.cellStates = new CellState[FIXED_CAPACITY];
@@ -55,6 +56,6 @@ public class Column {
 	}
 
 	public String tokenAtGivenHeightToString(int lineNumber) {
-		return this.cellStates[lineNumber].toString();
+		return this.cellStates[lineNumber].tokenToString();
 	}
 }

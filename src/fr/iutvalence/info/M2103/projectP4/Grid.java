@@ -24,7 +24,7 @@ public class Grid {
 	 * the token always falls on the lowest possible place in the column
 	 * 
 	 */
-	public Column[] columns;
+	public Column[] columns=null;
 
 	// TODO fix comment: detail comment, tell how is the grid once built (empty, full, ... ?) (DONE)
 	/**
@@ -33,6 +33,7 @@ public class Grid {
 	 * In other words : builds a grid composed of 6 empty columns
 	 */
 	public Grid() {
+		this.columns=new Column[NUMBER_OF_COLUMNS];
 		for (int numCol = 0; numCol < NUMBER_OF_COLUMNS; numCol++) {
 			this.columns[numCol] = new Column();
 		}
@@ -45,17 +46,17 @@ public class Grid {
 	 * @param myColor color of the token that is added.
 	 * @return true if token was added ; false otherwise.
 	 */
-	public boolean addToken(int number, CellState myColor)
+	public boolean addToken(int colNumber, CellState myColor)
 	{
-		this.columns=new Column[NUMBER_OF_COLUMNS];
+		/*this.columns=new Column[NUMBER_OF_COLUMNS];
 		for (int numCol=0; numCol<NUMBER_OF_COLUMNS;numCol++)
 		{
 			this.columns[numCol]=new Column();
-		}
-		// Small problem to settle (private->public)
-		if (this.columns[number].height<this.columns[number].capacity){
-			this.columns[number].cellStates[this.columns[number].height-1]=myColor;
-			this.columns[number].height=this.columns[number].height+1;
+		}*/
+
+		if (this.columns[colNumber].height<this.columns[colNumber].capacity){
+			this.columns[colNumber].cellStates[this.columns[colNumber].height-1]=myColor;
+			this.columns[colNumber].height=this.columns[colNumber].height+1;
 			return true;
 		}
 		return false;
@@ -68,14 +69,17 @@ public class Grid {
 	 */
 	public String toString()
 	{
-		String p4AsciiArt = "------------------------------------------------\n";
+		String p4AsciiArt = "-------------------------------------------\n";
 		for (int lineNumber=NUMBER_OF_LINES-1; lineNumber>=0; lineNumber--)
 		{
-			for (int columnNumber=0; columnNumber< NUMBER_OF_COLUMNS; columnNumber++)
+			for (int columnNumber=0; columnNumber< NUMBER_OF_COLUMNS; columnNumber++){
+				p4AsciiArt+="|";
 				p4AsciiArt += this.columns[columnNumber].tokenAtGivenHeightToString(lineNumber);
+			}
+			p4AsciiArt+="|";
 			p4AsciiArt+="\n";
+			p4AsciiArt+= "-------------------------------------------\n";
 		}
-		p4AsciiArt += "------------------------------------------------\n";
 		return p4AsciiArt;
 	}
 	

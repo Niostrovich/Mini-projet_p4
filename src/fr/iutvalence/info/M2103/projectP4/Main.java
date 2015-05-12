@@ -7,9 +7,12 @@ package fr.iutvalence.info.M2103.projectP4;
  *
  */
 public class Main {
-
-	public void main(String[] args) {
+	
+	/**
+	 * method main (used to call the P4Game builder, which launches a new game
+	 * @param args
+	 */
+	public static void main(String[] args) {
 		new P4Game();
-		//System.out.println(new Grid());
 	}
 }
