@@ -46,16 +46,17 @@ public class Grid {
 	 * @param myColor color of the token that is added.
 	 * @return true if token was added ; false otherwise.
 	 */
-	public boolean addToken(int colNumber, CellState myColor)
+	public boolean addToken(int colNumber, int numPlayer)
 	{
-		/*this.columns=new Column[NUMBER_OF_COLUMNS];
-		for (int numCol=0; numCol<NUMBER_OF_COLUMNS;numCol++)
-		{
-			this.columns[numCol]=new Column();
-		}*/
-
 		if (this.columns[colNumber].height<this.columns[colNumber].capacity){
-			this.columns[colNumber].cellStates[this.columns[colNumber].height-1]=myColor;
+			switch (numPlayer){
+			case 1:
+				this.columns[colNumber].cellStates[this.columns[colNumber].height-1]=CellState.YELLOW_TOKEN;
+				break;
+			case 2:
+				this.columns[colNumber].cellStates[this.columns[colNumber].height-1]=CellState.RED_TOKEN;
+				break;
+			}
 			this.columns[colNumber].height=this.columns[colNumber].height+1;
 			return true;
 		}
@@ -67,7 +68,7 @@ public class Grid {
 	 * Get an Ascii-Art representation of the grid
 	 * 
 	 */
-	public String toString()
+	public String gridToString()
 	{
 		String p4AsciiArt = "-------------------------------------------\n";
 		for (int lineNumber=NUMBER_OF_LINES-1; lineNumber>=0; lineNumber--)
