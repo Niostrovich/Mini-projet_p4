@@ -51,10 +51,10 @@ public class Grid {
 		if (this.columns[colNumber].height<this.columns[colNumber].capacity){
 			switch (numPlayer){
 			case 1:
-				this.columns[colNumber].cellStates[this.columns[colNumber].height-1]=CellState.YELLOW_TOKEN;
+				this.columns[colNumber].cellStates[this.columns[colNumber].height]=CellState.YELLOW_TOKEN;
 				break;
 			case 2:
-				this.columns[colNumber].cellStates[this.columns[colNumber].height-1]=CellState.RED_TOKEN;
+				this.columns[colNumber].cellStates[this.columns[colNumber].height]=CellState.RED_TOKEN;
 				break;
 			}
 			this.columns[colNumber].height=this.columns[colNumber].height+1;

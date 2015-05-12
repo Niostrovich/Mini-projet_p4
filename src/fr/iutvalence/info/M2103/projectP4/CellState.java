@@ -6,12 +6,14 @@ package fr.iutvalence.info.M2103.projectP4;
  */
 
 public enum CellState {
-
 	RED_TOKEN,
 	YELLOW_TOKEN,
 	NO_TOKEN;
 	
-		
+	/**
+	 * used for the Ascii-Art representation
+	 * @return
+	 */
 	public String tokenToString()
 	{
 		if(this==RED_TOKEN)

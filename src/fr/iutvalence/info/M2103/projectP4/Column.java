@@ -54,7 +54,12 @@ public class Column {
 			cellStates[numCell]=CellState.NO_TOKEN;
 		}
 	}
-
+	
+	/**
+	 * used for the Ascii-Art representation
+	 * @param lineNumber
+	 * @return
+	 */
 	public String tokenAtGivenHeightToString(int lineNumber) {
 		return this.cellStates[lineNumber].tokenToString();
 	}
