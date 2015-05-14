@@ -4,20 +4,22 @@ package fr.iutvalence.info.M2103.projectP4;
  * represents the grid
  * it's our game's grid
  * 
- * @author augstm
+ * @author AUGST Maxime and CHALUMEAU Joris
  *
  */
 public class Grid {
 
 	/**
 	 * number of columns
+	 * if made private, will cause problems to check if there is a winner
 	 */
-	private final static int NUMBER_OF_COLUMNS = 7;
+	protected final static int NUMBER_OF_COLUMNS = 7;
 
 	/**
 	 * number of lines
+	 * if made private, will cause problems to check if there is a winner
 	 */
-	private final static int NUMBER_OF_LINES = 6;
+	protected final static int NUMBER_OF_LINES = 6;
 
 	/**
 	 * represents grid (=table of columns)
@@ -41,7 +43,7 @@ public class Grid {
 	
 	// TODO write comment (DONE)
 	/**
-	 * the function add a token in the column if possible (empty slots available in the column).
+	 * the function adds a token in the column if possible (empty slots available in the column).
 	 * @param number number of the column (where the token is added).
 	 * @param myColor color of the token that is added.
 	 * @return true if token was added ; false otherwise.
@@ -81,8 +83,34 @@ public class Grid {
 			p4AsciiArt+="\n";
 			p4AsciiArt+= "-------------------------------------------\n";
 		}
+		p4AsciiArt+= "   0     1     2     3     4     5     6\n";
 		return p4AsciiArt;
 	}
 	
 	
+	/**
+	 * returns true if the designated token is of the color corresponding to the num of the player ; otherwise false
+	 * @param columnNumber
+	 * @param lineNumber
+	 * @param numPlayer
+	 * @return
+	 */
+	public boolean samePlayerToken(int columnNumber,int lineNumber,int numPlayer){
+		if((this.columns[columnNumber].cellStates[lineNumber]==CellState.YELLOW_TOKEN && numPlayer==1)
+				|| (this.columns[columnNumber].cellStates[lineNumber]==CellState.RED_TOKEN && numPlayer==2))
+			return true;
+		return false;
+	}
+	
+	/**
+	 * returns true if the grid is full of tokens (no more empty place for another token) ; otherwise false
+	 * @return
+	 */
+	public boolean gridFullOfToken() {
+		for (int colNumber=0;colNumber<NUMBER_OF_COLUMNS;colNumber++){
+			if (this.columns[colNumber].height!=this.columns[colNumber].capacity)
+				return false;
+		}
+		return true;
+	}
 }

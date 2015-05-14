@@ -2,7 +2,7 @@ package fr.iutvalence.info.M2103.projectP4;
 
 /**
  * represents a token 
- * @author augstm
+ * @author AUGST Maxime and CHALUMEAU Joris
  */
 
 public enum CellState {

@@ -3,7 +3,7 @@ package fr.iutvalence.info.M2103.projectP4;
 /**
  * Represent grid's column
  * 
- * @author augstm
+ * @author AUGST Maxime and CHALUMEAU Joris
  *
  */
 public class Column {
@@ -27,9 +27,8 @@ public class Column {
 	protected int height;
 
 	/**
-	 * capacity's column
+	 * column's capacity
 	 * maximum number of token in the column (height + available space for tokens)
-	 * 
 	 */
 	protected final int capacity;
 
