@@ -1,5 +1,9 @@
 package fr.iutvalence.info.M2103.projectP4;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 /**
  * represents a token 
  * @author AUGST Maxime and CHALUMEAU Joris
@@ -26,5 +30,10 @@ public enum CellState {
 		}
 		return "     ";
 	}
+
+	/*public void voidToken(JFrame theWindow) {
+		for (int numButton=0;numButton<42;numButton++)
+			theWindow.add(new JButton().setIcon(new ImageIcon("./Desktop/Ordinateur/G/imgCaseP4-blanc.png")),theWindow);
+	}*/
 	
 }
