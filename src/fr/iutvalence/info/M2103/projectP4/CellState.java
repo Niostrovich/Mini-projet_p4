@@ -25,5 +25,5 @@ public enum CellState {
 			return "  Y  ";
 		}
 		return "     ";
-	}	
+	}
 }
