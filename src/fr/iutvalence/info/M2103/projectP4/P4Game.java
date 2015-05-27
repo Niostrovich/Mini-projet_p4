@@ -73,6 +73,51 @@ public class P4Game {
 	}
 	
 	/**
+	 * The game development : (follows the progress of the game)
+	 * Most of the game procedures are called in this method
+	 * Graph Interface version !
+	 * @param player1
+	 * @param player2
+	 * @param disp
+	 */
+	public void play(PlayerGUI player1, PlayerGUI player2, Displaying disp){
+		int numPlayer=1;
+		boolean wasAdded;
+		int numCol;
+		boolean isADraw=false;
+		
+		while (this.isWon==false){
+			switch (numPlayer){
+			case 1:
+				numCol=player1.getColumn(disp);
+				break;
+			case 2:
+			default:
+				numCol=player2.getColumn(disp);
+				break;
+			}
+			wasAdded=this.gameTable.addToken(numCol, numPlayer);
+			this.wait1s();
+			if (wasAdded){
+				this.isWon=hasWon(numCol,numPlayer); // checking if this player won or not
+				if (!this.isWon){
+					isADraw=this.gameTable.gridFullOfToken();
+					this.isWon=isADraw;
+					numPlayer=numPlayerNextTurn(wasAdded, numPlayer);
+	                		// with this, we can alternate turns between players 1 and 2
+				}
+			}
+		}
+		switch (numPlayer){
+		case 1:
+			player1.cheers(isADraw, disp);
+		case 2:
+		default:
+			 player2.cheers(isADraw, disp);
+		}
+	}
+	
+	/**
 	 * 1s delay before going on (better in order to follow the game step by step)
 	 * it makes the game run more smoothly (or the computer will choose a column instantly)
 	 */

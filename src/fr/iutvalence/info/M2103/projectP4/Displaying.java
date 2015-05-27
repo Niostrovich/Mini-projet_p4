@@ -1,6 +1,8 @@
 package fr.iutvalence.info.M2103.projectP4;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
 //import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -34,14 +36,15 @@ public class Displaying implements Runnable {
 	private JPanel pan2;
 	
 	/**
-	 * 
+	 * label of the console (used to give info to the player)
 	 */
-	private JLabel lab;
+	protected JLabel lab;
 	
 	public Displaying(){
 		this.window = new JFrame();
 		this.pan1 = new JPanel();
 		this.pan2 = new JPanel();
+		this.lab = new JLabel("Console :");
 	}
 	
 	@Override
@@ -66,9 +69,7 @@ public class Displaying implements Runnable {
 		}
 		
 		// pan2 => the console
-		this.lab = new JLabel("Console :\n");
-		this.lab.setHorizontalTextPosition(SwingConstants.LEFT);
-		this.lab.setHorizontalAlignment(SwingConstants.LEFT);
+		this.pan2.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.pan2.add(this.lab);
 		
 		// splitPane

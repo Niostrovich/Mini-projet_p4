@@ -29,6 +29,11 @@ public class Main {
 		Displaying disp = new Displaying(); 
 		SwingUtilities.invokeLater(disp);
 		p1.greetings(disp);
+		
+		P4Game myGame=new P4Game();
+		myGame.play(p1, p2, disp);
+		
+		//  --> Without Graphic Interface version :
 		//P4Game myGame=new P4Game();
 		//myGame.play(p1, p2);
 	}
