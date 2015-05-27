@@ -5,11 +5,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import sun.awt.DisplayChangedListener;
+
 /**
  * represents a player
  * @author AUGST Maxime and CHALUMEAU Joris
  */
-public class Player {
+public class PlayerGUI {
 	
 	/**
 	 * number of this Player
@@ -20,7 +22,7 @@ public class Player {
 	 * initialize a new player (with a given number)
 	 * @param numPlayer
 	 */
-	public Player(int numPlayer){
+	public PlayerGUI(int numPlayer){
 		this.numPlayer=numPlayer;
 	}
 	
@@ -79,11 +81,11 @@ public class Player {
 	/**
 	 * displays starting greetings and instructions (nothing more)
 	 */
-	public void greetings() {
-		System.out.println("Welcome to this P4 game\n");
-		System.out.println("We hope you enjoy this mini game ;)\n");
-		System.out.println("You are player1, and player2 is an IA (random choices)\n");
-		System.out.println("player1=Yellow ; player2=Red\n");
-	}
+	/*public void greetings(Displaying disp) {
+		disp.lab.setText("Welcome to this P4 game\n"
+				+"We hope you enjoy this mini game ;)\n"
+				+"You are player1, and player2 is an IA (random choices)\n"
+				+"player1=Yellow ; player2=Red\n");
+	}*/
 	
 }

@@ -1,7 +1,14 @@
 package fr.iutvalence.info.M2103.projectP4;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ * Customized version of JButton
+ * @author AUGST Maxime and CHALUMEAU Joris
+ *
+ */
+@SuppressWarnings("serial")
 public class ButtonP4 extends JButton {
 	private int numCol;
 	

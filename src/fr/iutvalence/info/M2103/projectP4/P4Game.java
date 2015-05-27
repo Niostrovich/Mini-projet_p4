@@ -7,15 +7,6 @@ package fr.iutvalence.info.M2103.projectP4;
  *
  */
 public class P4Game {
-	/**
-	 * integer corresponding to the number of the first player
-	 */
-	private final static int PLAYER_NUMBER_1=1;
-	
-	/**
-	 * integer corresponding to the number of the second player
-	 */
-	private final static int PLAYER_NUMBER_2=2;
 	
 	/**
 	 * Grid of the game : represents the game table during a game.
@@ -29,45 +20,32 @@ public class P4Game {
 	protected boolean isWon;
 	
 	/**
-	 * player number 1
-	 */
-	private Player player1;
-	
-	/**
-	 * player number 2
-	 */
-	private Player player2;
-	
-	/**
 	 * Starts a new game
 	 */
 	public P4Game(){
 		this.isWon=false;
 		this.gameTable=new Grid();  // creates new grid (initializing game)
-		this.player1=new Player(PLAYER_NUMBER_1);
-		this.player2=new Player(PLAYER_NUMBER_2);
 	}
 	
 	/**
 	 * The game development : (follows the progress of the game)
 	 * Most of the game procedures are called in this method
 	 */
-	public void play(){
+	public void play(Player player1, Player player2){
 		int numPlayer=1;
 		boolean wasAdded;
 		int numCol;
 		boolean isADraw=false;
 		
-		this.player1.greetings();
 		while (this.isWon==false){
 			System.out.println(this.gameTable.gridToString());
 			switch (numPlayer){
 			case 1:
-				numCol=this.player1.addNewToken();
+				numCol=player1.getColumn();
 				break;
 			case 2:
 			default:
-				numCol=this.player2.addNewToken();
+				numCol=player2.getColumn();
 				break;
 			}
 			wasAdded=this.gameTable.addToken(numCol, numPlayer);
@@ -85,11 +63,11 @@ public class P4Game {
 		System.out.println("Final state of the Board Game:\n"+ this.gameTable.gridToString());
 		switch (numPlayer){
 		case 1:
-			this.player1.cheers(isADraw);
+			player1.cheers(isADraw);
 			break;
 		case 2:
 		default:
-			this.player2.cheers(isADraw);
+			player2.cheers(isADraw);
 			break;
 		}
 	}
