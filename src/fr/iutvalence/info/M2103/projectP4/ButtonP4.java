@@ -18,7 +18,7 @@ public class ButtonP4 extends JButton {
 	 */
 	private int numCol;
 
-	public ButtonP4(int numButton, InterfaceUser admin) {
+	public ButtonP4(int numButton, PlayerGUI admin) {
 		switch (numButton) {
 		case 0: case 7: case 14: case 21: case 28: case 35:
 			this.numCol=0;

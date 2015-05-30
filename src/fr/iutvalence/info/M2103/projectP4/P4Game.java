@@ -35,7 +35,7 @@ public class P4Game {
 	 * @param player2
 	 * @param disp
 	 */
-	public void play(PlayerGUI player1, PlayerGUI player2, Displaying disp){
+	public void play(Player player1, Player player2, Displaying disp){
 		int numPlayer=1;
 		boolean wasAdded;
 		int numCol;

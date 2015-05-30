@@ -15,9 +15,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		InterfaceUser admin = new PlayerGUI(0);
-		PlayerGUI p1 = new PlayerGUI(1);
-		PlayerGUI p2 = new PlayerGUI(2);
+		PlayerGUI admin = new Player(0);
+		Player p1 = new Player(1);
+		Player p2 = new Player(2);
 		P4Game myGame = new P4Game();
 		Displaying disp = new Displaying(admin);
 		SwingUtilities.invokeLater(disp);

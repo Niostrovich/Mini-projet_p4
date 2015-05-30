@@ -23,7 +23,7 @@ public class Displaying implements Runnable, ActionListener {
 	/**
 	 * controls P4 player
 	 */
-	private InterfaceUser playerManager;
+	private PlayerGUI playerManager;
 	
 	/**
 	 * the window of the game (including both the grid and the console)
@@ -50,7 +50,7 @@ public class Displaying implements Runnable, ActionListener {
 	 * creates new window
 	 * @param controller
 	 */
-	public Displaying(InterfaceUser controller){
+	public Displaying(PlayerGUI controller){
 		this.playerManager = controller;
 		this.window = new JFrame();
 		this.pan1 = new JPanel();
