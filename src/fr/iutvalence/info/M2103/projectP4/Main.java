@@ -18,7 +18,7 @@ public class Main {
 		InterfaceUser admin = new PlayerGUI(0);
 		PlayerGUI p1 = new PlayerGUI(1);
 		PlayerGUI p2 = new PlayerGUI(2);
-		InterfaceGame myGame = new P4Game();
+		P4Game myGame = new P4Game();
 		Displaying disp = new Displaying(admin);
 		SwingUtilities.invokeLater(disp);
 		disp.addButtonWindow();

@@ -6,7 +6,7 @@ package fr.iutvalence.info.M2103.projectP4;
  * @author AUGST Maxime and CHALUMEAU Joris
  *
  */
-public class P4Game implements InterfaceGame {
+public class P4Game {
 	
 	/**
 	 * Grid of the game : represents the game table during a game.
