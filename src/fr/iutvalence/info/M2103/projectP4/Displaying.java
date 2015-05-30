@@ -1,16 +1,16 @@
 package fr.iutvalence.info.M2103.projectP4;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
-
-//import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.SwingConstants;
 
 /**
  * Task managing the interface (creating, displaying...)
@@ -18,7 +18,12 @@ import javax.swing.SwingConstants;
  * @author AUGST Maxime and CHALUMEAU Joris
  *
  */
-public class Displaying implements Runnable {
+public class Displaying implements Runnable, ActionListener {
+	
+	/**
+	 * controls P4 player
+	 */
+	private InterfaceUser playerManager;
 	
 	/**
 	 * the window of the game (including both the grid and the console)
@@ -28,7 +33,7 @@ public class Displaying implements Runnable {
 	/**
 	 * panel 1 (the grid of the game)
 	 */
-	private JPanel pan1;
+	protected JPanel pan1;
 	
 	/**
 	 * panel 2 (the console)
@@ -40,15 +45,34 @@ public class Displaying implements Runnable {
 	 */
 	protected JLabel lab;
 	
-	public Displaying(){
+	/**
+	 * constructor of the window
+	 * creates new window
+	 * @param controller
+	 */
+	public Displaying(InterfaceUser controller){
+		this.playerManager = controller;
 		this.window = new JFrame();
 		this.pan1 = new JPanel();
 		this.pan2 = new JPanel();
 		this.lab = new JLabel("Console :");
 	}
 	
+	/**
+	 * overrides runnable
+	 * works in another thread than main
+	 */
 	@Override
 	public void run() {
+		this.initGraphInterface();
+		// greeting message
+		this.playerManager.greetings(this);
+	}
+	
+	/**
+	 * Used to initialize the Graphic Interface
+	 */
+	protected void initGraphInterface(){
 		this.window.setTitle("Puissance 4");
 		this.window.setSize(716, 800);
 		this.window.setLocationRelativeTo(null);
@@ -57,20 +81,13 @@ public class Displaying implements Runnable {
 		
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
-		// pan1 => the grid (for the P4 game)
-		GridLayout gl = new GridLayout(6,7);
-		this.pan1.setLayout(gl);
-		for (int numButton=0;numButton<42;numButton++){
-			ButtonP4 button = new ButtonP4(numButton); 
-			this.pan1.add(button);
-		    button.setIcon(new ImageIcon("./img/imgCaseP4-blanc.png"));
-		    			// default picture (P4 game without token)
-		    button.addActionListener(null);
-		}
-		
 		// pan2 => the console
-		this.pan2.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.pan2.setLayout(new BorderLayout());
 		this.pan2.add(this.lab);
+		JButton helpButton = new JButton();
+		helpButton.setIcon(new ImageIcon("./img/imgHelpButton.png"));
+		this.pan2.add(helpButton, BorderLayout.EAST);
+		helpButton.addActionListener(this);
 		
 		// splitPane
 		splitPane.add(this.pan1);
@@ -84,5 +101,22 @@ public class Displaying implements Runnable {
 		// displays the window
 		this.window.setVisible(true);
 	}
+	
+	public void addButtonWindow(){
+		// pan1 => the grid (for the P4 game)
+		GridLayout gl = new GridLayout(6,7);
+		this.pan1.setLayout(gl);
+		for (int numButton=0;numButton<42;numButton++){
+			ButtonP4 button = new ButtonP4(numButton, this.playerManager);
+			this.pan1.add(button);
+			this.pan1.setComponentZOrder(button,numButton);
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		this.playerManager.helpInstructions(this);
+	}
+	
 	
 }

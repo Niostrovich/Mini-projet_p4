@@ -8,11 +8,6 @@ package fr.iutvalence.info.M2103.projectP4;
  */
 public class Column {
 
-	// TODO (think about it) if column are stored in an array, the array index is already
-	// a way to identify column among others (DONE)
-
-	//private final int number; (TO DELETE)
-
 	/**
 	 * column's capacity
 	 * the maximum height
@@ -44,7 +39,6 @@ public class Column {
 	 * Returns a new empty column 
 	 */
 	public Column() {
-		this.cellStates=new CellState[FIXED_CAPACITY];
 		this.capacity = FIXED_CAPACITY;
 		this.height = 0;
 		this.cellStates = new CellState[FIXED_CAPACITY];

@@ -1,18 +1,24 @@
 package fr.iutvalence.info.M2103.projectP4;
 
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
  * Customized version of JButton
+ * used to save the numCol of the button
  * @author AUGST Maxime and CHALUMEAU Joris
  *
  */
 @SuppressWarnings("serial")
 public class ButtonP4 extends JButton {
-	private int numCol;
 	
-	public ButtonP4(int numButton) {
+	/**
+	 * number of the Column of this button
+	 */
+	private int numCol;
+
+	public ButtonP4(int numButton, InterfaceUser admin) {
 		switch (numButton) {
 		case 0: case 7: case 14: case 21: case 28: case 35:
 			this.numCol=0;
@@ -35,5 +41,28 @@ public class ButtonP4 extends JButton {
 		default:
 			this.numCol=6;
 		}
+		
+		this.setActionCommand(""+this.numCol+"");
+		this.setIcon(new ImageIcon("./img/imgCaseP4-blanc.png")); // default picture (cell of P4 without token)
+		this.addActionListener((ActionListener) admin);
 	}
+	
+	/**
+	 * adds a token of the given color in the given column
+	 * @param numCol
+	 * @param color
+	 */
+	public void switchColorButton(CellState color){
+		switch (color){
+		case RED_TOKEN:
+			this.setIcon(new ImageIcon("./img/imgCaseP4-rouge.png"));
+			break;
+		case YELLOW_TOKEN:
+			this.setIcon(new ImageIcon("./img/imgCaseP4-jaune.png"));
+			break;
+		case NO_TOKEN:
+			break;
+		}
+	}
+	
 }

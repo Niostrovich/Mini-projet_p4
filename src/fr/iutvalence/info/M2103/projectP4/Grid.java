@@ -28,7 +28,6 @@ public class Grid {
 	 */
 	public Column[] columns=null;
 
-	// TODO fix comment: detail comment, tell how is the grid once built (empty, full, ... ?) (DONE)
 	/**
 	 * Grid's builder column's grid
 	 * Contains 6 (empty) columns
@@ -41,22 +40,27 @@ public class Grid {
 		}
 	}
 	
-	// TODO write comment (DONE)
 	/**
 	 * the function adds a token in the column if possible (empty slots available in the column).
 	 * @param number number of the column (where the token is added).
 	 * @param myColor color of the token that is added.
 	 * @return true if token was added ; false otherwise.
 	 */
-	public boolean addToken(int colNumber, int numPlayer)
+	public boolean addTokenGrid(int colNumber, int numPlayer, Displaying disp)
 	{
 		if (this.columns[colNumber].height<this.columns[colNumber].capacity){
 			switch (numPlayer){
 			case 1:
 				this.columns[colNumber].cellStates[this.columns[colNumber].height]=CellState.YELLOW_TOKEN;
+				// adds a yellow token in the displayed window
+				ButtonP4 buttonToYelowColor=(ButtonP4) disp.pan1.getComponent(getNumButton(colNumber, this.columns[colNumber].height+1));
+				buttonToYelowColor.switchColorButton(CellState.YELLOW_TOKEN);
 				break;
 			case 2:
 				this.columns[colNumber].cellStates[this.columns[colNumber].height]=CellState.RED_TOKEN;
+				// adds a red token in the displayed window
+				ButtonP4 buttonToRedColor=(ButtonP4) disp.pan1.getComponent(getNumButton(colNumber, this.columns[colNumber].height+1));
+				buttonToRedColor.switchColorButton(CellState.RED_TOKEN);
 				break;
 			}
 			this.columns[colNumber].height=this.columns[colNumber].height+1;
@@ -65,7 +69,16 @@ public class Grid {
 		return false;
 	}
 	
-	
+	/**
+	 * used to convert column and line number into the number of a button
+	 * @param colNumber
+	 * @param height
+	 * @return
+	 */
+	public int getNumButton(int colNumber, int height) {
+		return (NUMBER_OF_LINES-height)*NUMBER_OF_COLUMNS+colNumber;
+	}
+
 	/**
 	 * Get an Ascii-Art representation of the grid
 	 * 

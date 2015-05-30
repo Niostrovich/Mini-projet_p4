@@ -6,7 +6,7 @@ package fr.iutvalence.info.M2103.projectP4;
  * @author AUGST Maxime and CHALUMEAU Joris
  *
  */
-public class P4Game {
+public class P4Game implements InterfaceGame {
 	
 	/**
 	 * Grid of the game : represents the game table during a game.
@@ -22,54 +22,9 @@ public class P4Game {
 	/**
 	 * Starts a new game
 	 */
-	public P4Game(){
+	public P4Game() {
 		this.isWon=false;
 		this.gameTable=new Grid();  // creates new grid (initializing game)
-	}
-	
-	/**
-	 * The game development : (follows the progress of the game)
-	 * Most of the game procedures are called in this method
-	 */
-	public void play(Player player1, Player player2){
-		int numPlayer=1;
-		boolean wasAdded;
-		int numCol;
-		boolean isADraw=false;
-		
-		while (this.isWon==false){
-			System.out.println(this.gameTable.gridToString());
-			switch (numPlayer){
-			case 1:
-				numCol=player1.getColumn();
-				break;
-			case 2:
-			default:
-				numCol=player2.getColumn();
-				break;
-			}
-			wasAdded=this.gameTable.addToken(numCol, numPlayer);
-			this.wait1s();
-			if (wasAdded){
-				this.isWon=hasWon(numCol,numPlayer); // checking if this player won or not
-				if (!this.isWon){
-					isADraw=this.gameTable.gridFullOfToken();
-					this.isWon=isADraw;
-					numPlayer=numPlayerNextTurn(wasAdded, numPlayer);
-	                		// with this, we can alternate turns between players 1 and 2
-				}
-			}
-		}
-		System.out.println("Final state of the Board Game:\n"+ this.gameTable.gridToString());
-		switch (numPlayer){
-		case 1:
-			player1.cheers(isADraw);
-			break;
-		case 2:
-		default:
-			player2.cheers(isADraw);
-			break;
-		}
 	}
 	
 	/**
@@ -86,7 +41,7 @@ public class P4Game {
 		int numCol;
 		boolean isADraw=false;
 		
-		while (this.isWon==false){
+		while (!this.isWon){
 			switch (numPlayer){
 			case 1:
 				numCol=player1.getColumn(disp);
@@ -96,7 +51,7 @@ public class P4Game {
 				numCol=player2.getColumn(disp);
 				break;
 			}
-			wasAdded=this.gameTable.addToken(numCol, numPlayer);
+			wasAdded=this.gameTable.addTokenGrid(numCol, numPlayer, disp);
 			this.wait1s();
 			if (wasAdded){
 				this.isWon=hasWon(numCol,numPlayer); // checking if this player won or not
@@ -111,9 +66,10 @@ public class P4Game {
 		switch (numPlayer){
 		case 1:
 			player1.cheers(isADraw, disp);
+			break;
 		case 2:
 		default:
-			 player2.cheers(isADraw, disp);
+			player2.cheers(isADraw, disp);
 		}
 	}
 	
@@ -127,7 +83,7 @@ public class P4Game {
 		} catch (InterruptedException e) {
 			// exception impossible (never happening)
 		}
-	}
+	}	
 	
 	/**
 	 * returns the number of the player in the next turn
